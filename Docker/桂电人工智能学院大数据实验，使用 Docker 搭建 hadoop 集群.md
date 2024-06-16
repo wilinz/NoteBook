@@ -296,13 +296,17 @@ CAPACITY-SCHEDULER.XML_yarn.scheduler.capacity.queue-mappings-override.enable=fa
 
 ![image-20240616033113083](https://raw.githubusercontent.com/wilinz/picgo/main/image/202406160331208.png)
 
+#### 建议
+
+为了和PPT里面的代码一致，建议创一个 data 目录，然后把两个文件上传到 data 下面
+
 ![image-20240616033441148](https://raw.githubusercontent.com/wilinz/picgo/main/image/202406160334308.png)
 
 ## 后续
 
 在 Jupyter 中需要修改 HDFS 的 URL
 
-`hdfs://namenode/data/train.tsv`，其中`/data/train.tsv`为 HDFS 里面的文件路径，改成你自己的路径
+`hdfs://namenode/data/train.tsv`，主机名改成 namenode，其中`/data/train.tsv`为 HDFS 里面的文件路径，改成你自己的路径，如果你不知道路径，就去你刚刚上传文件的那个页面看
 
 ```python
 from pyspark import SparkConf, SparkContext
@@ -327,14 +331,10 @@ hadoop_conf.set("fs.defaultFS", "hdfs://namenode")
 hdfs = sc._gateway.jvm.FileSystem.get(hadoop_conf)
 
 # 设置文件路径
-Path = "hdfs://namenode/data/train.tsv"
+Path = "hdfs://namenode/" # 这是目录路径，文件路径 hdfs://namenode/data/train.tsv
 
-# 获取文件状态并读取文件大小
-path1 = sc._gateway.jvm.Path(Path)
-file_status = hdfs.getFileStatus(path1)
-file_size = file_status.getLen()
-
-print(f"File path: {Path}")
-print(f"File size: {file_size} bytes")
 ```
 
+效果如图
+
+![image-20240616154229209](https://raw.githubusercontent.com/wilinz/picgo/main/image/202406161542303.png)
