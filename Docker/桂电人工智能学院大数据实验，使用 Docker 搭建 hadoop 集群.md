@@ -252,7 +252,21 @@ CAPACITY-SCHEDULER.XML_yarn.scheduler.capacity.queue-mappings-override.enable=fa
 
 然后运行 `docker-compose -p project1 up -d`
 
-第一次运行需要拉取大概2个G的镜像，如果网络失败请自行搜索如何给 Docker Desktop 换源或者开不可描述的软件的 TUN 模式
+第一次运行需要拉取大概2个G的镜像，如果网络失败请自行搜索如何给 Docker Desktop 换源或者开不可描述的软件的 TUN 模式，由于某些原因，国内大部分镜像源于 2024.6.6 日后大部分关闭，因此请自行查找最新可用的镜像源，截至 2024.6.16 ，可用的有
+
+```json
+{ 
+    "registry-mirrors" : 
+    [ 
+      "https://docker.m.daocloud.io", 
+      "https://docker.jianmuhub.com",
+      "https://huecker.io",
+      "https://dockerhub.timeweb.cloud",
+      "https://dockerhub1.beget.com",
+      "https://noohub.ru"
+    ] 
+}
+```
 
 等到出现下图则运行成功
 
