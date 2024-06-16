@@ -302,7 +302,7 @@ CAPACITY-SCHEDULER.XML_yarn.scheduler.capacity.queue-mappings-override.enable=fa
 
 在 Jupyter 中需要修改 HDFS 的 URL
 
-`hdfs://namenode/data/train.tsv`，其中`/data/train.tsv`为 HDFS 里面的文件路径
+`hdfs://namenode/data/train.tsv`，其中`/data/train.tsv`为 HDFS 里面的文件路径，改成你自己的路径
 
 ```python
 from pyspark import SparkConf, SparkContext
@@ -327,14 +327,14 @@ hadoop_conf.set("fs.defaultFS", "hdfs://namenode")
 hdfs = sc._gateway.jvm.FileSystem.get(hadoop_conf)
 
 # 设置文件路径
-file_path = "hdfs://namenode/data/train.tsv"
+Path = "hdfs://namenode/data/train.tsv"
 
 # 获取文件状态并读取文件大小
-path = sc._gateway.jvm.Path(file_path)
-file_status = hdfs.getFileStatus(path)
+path1 = sc._gateway.jvm.Path(Path)
+file_status = hdfs.getFileStatus(path1)
 file_size = file_status.getLen()
 
-print(f"File path: {file_path}")
+print(f"File path: {Path}")
 print(f"File size: {file_size} bytes")
 ```
 
