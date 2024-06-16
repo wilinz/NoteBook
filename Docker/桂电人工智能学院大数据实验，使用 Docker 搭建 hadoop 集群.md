@@ -337,4 +337,4 @@ Path = "hdfs://namenode/" # 这是目录路径，文件路径 hdfs://namenode/da
 
 效果如图
 
-![image-20240616154229209](https://raw.githubusercontent.com/wilinz/picgo/main/image/202406161542303.png)
+![image-20240616155854628](https://raw.githubusercontent.com/wilinz/picgo/main/image/202406161558693.png)
